@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "0ce9142a-cb04-42a3-af4e-efd5dcfeb16d",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Volumes/jgleeSSD/Opencode/Guide/.archify/architecture-agent-3layer-20261101-134715/candidate.json",
+  "output": "/Volumes/jgleeSSD/Opencode/Guide/.archify/architecture-agent-3layer-20261101-134715/agent-architecture.html",
+  "specification": {
+    "sha256": "2195b14a2df2203765209c6ea7afba7ef7b5f216bf7c2160bee4bb8ca8768f43",
+    "bytes": 5861
+  },
+  "artifact": {
+    "sha256": "b9b44409bfd787aa3f1166d1feef4f1b718b28e2e1bbee6ba7edd595b7b223a4",
+    "bytes": 856778
+  }
+}

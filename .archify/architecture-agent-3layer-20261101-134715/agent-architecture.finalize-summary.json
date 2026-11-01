@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Volumes/jgleeSSD/Opencode/Guide/.archify/architecture-agent-3layer-20261101-134715/candidate.json",
+    "sha256": "2195b14a2df2203765209c6ea7afba7ef7b5f216bf7c2160bee4bb8ca8768f43",
+    "bytes": 5861
+  },
+  "artifact": {
+    "path": "/Volumes/jgleeSSD/Opencode/Guide/.archify/architecture-agent-3layer-20261101-134715/agent-architecture.html",
+    "sha256": "b9b44409bfd787aa3f1166d1feef4f1b718b28e2e1bbee6ba7edd595b7b223a4",
+    "bytes": 856778
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Volumes/jgleeSSD/Opencode/Guide/.archify/architecture-agent-3layer-20261101-134715/agent-architecture.finalize.json",
+    "summaryReceipt": "/Volumes/jgleeSSD/Opencode/Guide/.archify/architecture-agent-3layer-20261101-134715/agent-architecture.finalize-summary.json",
+    "browserCheckReceipt": "/Volumes/jgleeSSD/Opencode/Guide/.archify/architecture-agent-3layer-20261101-134715/agent-architecture.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-11-01T04:49:50.026Z",
+    "source": "network",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 12824,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}
