@@ -1,0 +1,1442 @@
+[
+  {
+    "text": "Okay, so this past weekend, DeepSeek released something that",
+    "start": 0.299,
+    "duration": 3.334
+  },
+  {
+    "text": "a lot of people out there are calling the answer to Claude Code.",
+    "start": 3.635,
+    "duration": 2.942
+  },
+  {
+    "text": "It's an agent that sits on a GitHub repo.",
+    "start": 6.863,
+    "duration": 2.348
+  },
+  {
+    "text": "It watches the issues and pull requests, and when someone on your team asks it",
+    "start": 9.244,
+    "duration": 4.67
+  },
+  {
+    "text": "to do something, It then goes off into its own session, does the work, and",
+    "start": 13.914,
+    "duration": 4.305
+  },
+  {
+    "text": "comes back with a PR Now, while that's cool in itself, that's not really the",
+    "start": 18.219,
+    "duration": 5.031
+  },
+  {
+    "text": "part that I want to talk about here.",
+    "start": 23.25,
+    "duration": 1.597
+  },
+  {
+    "text": "The part that I find really interesting is how they built it.",
+    "start": 25.155,
+    "duration": 2.947
+  },
+  {
+    "text": "The whole thing is just a set of plugins dropped into their agent harness.",
+    "start": 28.467,
+    "duration": 5.502
+  },
+  {
+    "text": "And to understand why that matters, we need to go back and actually look",
+    "start": 34.236,
+    "duration": 3.521
+  },
+  {
+    "text": "at the harness itself So when the DeepSeek Carnis came out back in",
+    "start": 37.757,
+    "duration": 3.528
+  },
+  {
+    "text": "August, I didn't actually cover it.",
+    "start": 41.311,
+    "duration": 1.776
+  },
+  {
+    "text": "And honestly, the reason for that was I just got so busy playing with it and",
+    "start": 43.371,
+    "duration": 3.084
+  },
+  {
+    "text": "trying out new ideas with it all the time, I kept putting off making the",
+    "start": 46.463,
+    "duration": 3.83
+  },
+  {
+    "text": "video because I felt like there were so many things that I wanted to show.",
+    "start": 50.294,
+    "duration": 3.229
+  },
+  {
+    "text": "For me, the whole plugin architecture of that harness is really cool and it",
+    "start": 53.823,
+    "duration": 4.712
+  },
+  {
+    "text": "just allows you to do a whole bunch of things like this new super agent enables",
+    "start": 58.535,
+    "duration": 4.408
+  },
+  {
+    "text": "Now, obviously in the meantime, a lot of people ended up covering it.",
+    "start": 63.243,
+    "duration": 3.301
+  },
+  {
+    "text": "It's turned out to be one of the most starred projects on GitHub this year So in",
+    "start": 66.726,
+    "duration": 3.648
+  },
+  {
+    "text": "this video I'm gonna do a sort of catch up on that and look at some of the new stuff",
+    "start": 70.374,
+    "duration": 3.533
+  },
+  {
+    "text": "that they've actually built on top of this all right, so the new thing that DeepSeek",
+    "start": 73.907,
+    "duration": 3.3
+  },
+  {
+    "text": "has launched is called Super Agent.",
+    "start": 77.364,
+    "duration": 1.918
+  },
+  {
+    "text": "and along with the repo that they launched, they've basically written",
+    "start": 79.529,
+    "duration": 2.552
+  },
+  {
+    "text": "an article on X called Exploring Super Agent Design: Towards a",
+    "start": 82.081,
+    "duration": 5.016
+  },
+  {
+    "text": "More Autonomous Agent System",
+    "start": 87.098,
+    "duration": 1.968
+  },
+  {
+    "text": "And in that article in the repo, they're very upfront about that",
+    "start": 89.32,
+    "duration": 3.429
+  },
+  {
+    "text": "this is a research prototype.",
+    "start": 92.749,
+    "duration": 1.685
+  },
+  {
+    "text": "It's not an official DeepSeek product",
+    "start": 94.453,
+    "duration": 2.299
+  },
+  {
+    "text": "And they even mentioned that it grew out of their own day-to-day development",
+    "start": 96.955,
+    "duration": 3.831
+  },
+  {
+    "text": "work and that a lot of the ideas and the engineering here were actually",
+    "start": 100.802,
+    "duration": 3.88
+  },
+  {
+    "text": "written by coding agents themselves.",
+    "start": 104.683,
+    "duration": 2.391
+  },
+  {
+    "text": "So the basic idea is this, instead of you opening a session and talking to an agent,",
+    "start": 107.45,
+    "duration": 5.161
+  },
+  {
+    "text": "The agent listens to where your team already works and the example that they've",
+    "start": 112.874,
+    "duration": 4.08
+  },
+  {
+    "text": "launched now, that happens to be GitHub, and also happens to be an app called",
+    "start": 116.954,
+    "duration": 3.763
+  },
+  {
+    "text": "Feishu, which is ByteDance's sort of Slack equivalent now when someone who's allowed",
+    "start": 120.722,
+    "duration": 5.291
+  },
+  {
+    "text": "to asks it for something, it opens up a work item, it spins up its own session in",
+    "start": 126.014,
+    "duration": 6.422
+  },
+  {
+    "text": "its own directory, does all of the work, replies back to the original conversation",
+    "start": 132.436,
+    "duration": 5.504
+  },
+  {
+    "text": "And then usually in that reply, it's going to have a pull request in there",
+    "start": 138.24,
+    "duration": 4.028
+  },
+  {
+    "text": "And in many ways, you can kind of think of this as building on the whole ideas",
+    "start": 142.568,
+    "duration": 3.576
+  },
+  {
+    "text": "of software factories, of automated software generation and stuff that",
+    "start": 146.159,
+    "duration": 4.585
+  },
+  {
+    "text": "we've seen a lot of people being talking about over the past couple of months",
+    "start": 150.744,
+    "duration": 3.503
+  },
+  {
+    "text": "Now DeepSeek themselves say that they've been running an internal",
+    "start": 154.547,
+    "duration": 2.988
+  },
+  {
+    "text": "version of this continuously.",
+    "start": 157.549,
+    "duration": 1.828
+  },
+  {
+    "text": "It's been reproducing and fixing bug issues, responding to code review comments",
+    "start": 159.664,
+    "duration": 4.799
+  },
+  {
+    "text": "And it's actually been making improvements to the DeepSeek harness itself so before",
+    "start": 164.763,
+    "duration": 5.096
+  },
+  {
+    "text": "I go into showing you the how of how it actually all works, I wanna show you why",
+    "start": 169.861,
+    "duration": 4.358
+  },
+  {
+    "text": "the harness layer matters so much Recently on the VentureBeat podcast, Beyond the",
+    "start": 174.224,
+    "duration": 4.58
+  },
+  {
+    "text": "Pilot, which I co-host, we've interviewed a number of interesting people, including",
+    "start": 178.804,
+    "duration": 4.218
+  },
+  {
+    "text": "the CTO of Instacart and the CTO of Box.",
+    "start": 183.022,
+    "duration": 3.151
+  },
+  {
+    "text": "Now, both of those episodes are coming up over the next couple of weeks or so.",
+    "start": 186.342,
+    "duration": 3.598
+  },
+  {
+    "text": "But one of the questions that I put to both of them was basically",
+    "start": 190.317,
+    "duration": 4.175
+  },
+  {
+    "text": "what's more important now?",
+    "start": 194.512,
+    "duration": 1.166
+  },
+  {
+    "text": "the model or the harness?",
+    "start": 195.715,
+    "duration": 1.588
+  },
+  {
+    "text": "both of them came back on the side of the harness.",
+    "start": 197.503,
+    "duration": 2.976
+  },
+  {
+    "text": "And I'll leave it for you to watch the full interviews because it was fascinating",
+    "start": 200.504,
+    "duration": 3.195
+  },
+  {
+    "text": "conversations but clearly now a lot of the innovation has moved away from just",
+    "start": 203.702,
+    "duration": 4.819
+  },
+  {
+    "text": "the model itself to the actual harnesses.",
+    "start": 208.524,
+    "duration": 2.964
+  },
+  {
+    "text": "And maybe it will swing back in the future as we get better models, but currently",
+    "start": 211.521,
+    "duration": 4.461
+  },
+  {
+    "text": "you need to be focused on where the harnesses are going All right, so one of",
+    "start": 215.983,
+    "duration": 3.633
+  },
+  {
+    "text": "the things that my team and I are trying to do right now is increase the coverage",
+    "start": 219.616,
+    "duration": 3.683
+  },
+  {
+    "text": "and the number of videos that we're doing.",
+    "start": 223.322,
+    "duration": 1.716
+  },
+  {
+    "text": "It would really help if you just support the channel by",
+    "start": 225.343,
+    "duration": 2.163
+  },
+  {
+    "text": "clicking that subscribe button.",
+    "start": 227.508,
+    "duration": 1.634
+  },
+  {
+    "text": "we know that most of you are watching a lot of the videos and",
+    "start": 229.297,
+    "duration": 2.706
+  },
+  {
+    "text": "still not subscribed Anyway, back to why the harness is so important.",
+    "start": 232.003,
+    "duration": 4.614
+  },
+  {
+    "text": "so this is the Frontier Harness chart and result table.",
+    "start": 236.903,
+    "duration": 3.394
+  },
+  {
+    "text": "So these aren't my numbers.",
+    "start": 240.536,
+    "duration": 1.477
+  },
+  {
+    "text": "This comes from a benchmark called Frontier Harness Eval, and what they did",
+    "start": 242.017,
+    "duration": 4.217
+  },
+  {
+    "text": "was take one model, the Kimi K3, and run it through nine different coding agent",
+    "start": 246.235,
+    "duration": 5.459
+  },
+  {
+    "text": "harnesses, 12 configurations in total.",
+    "start": 251.712,
+    "duration": 2.886
+  },
+  {
+    "text": "Codex, Claude Code, Pi, OpenCode, DeepSeek Harness, et cetera",
+    "start": 254.889,
+    "duration": 4.877
+  },
+  {
+    "text": "They then gave it the same 30 tasks, same model, same runtime.",
+    "start": 260.066,
+    "duration": 4.018
+  },
+  {
+    "text": "The only thing that changed here was the harness Now, you could make the argument",
+    "start": 264.09,
+    "duration": 4.474
+  },
+  {
+    "text": "that it's not a totally fair comparison, that Claude Code is optimized for its",
+    "start": 268.565,
+    "duration": 4.091
+  },
+  {
+    "text": "models, that Codex is optimized for the models, but it's really interesting",
+    "start": 272.656,
+    "duration": 3.997
+  },
+  {
+    "text": "to see the results that they got here.",
+    "start": 276.656,
+    "duration": 1.879
+  },
+  {
+    "text": "Codex came out on top with 66.7 pass rate But if you look at that next row, DeepSeek",
+    "start": 278.835,
+    "duration": 6.868
+  },
+  {
+    "text": "Harness in its creator configuration and Claude Code both scored 63.3%.",
+    "start": 285.707,
+    "duration": 7.551
+  },
+  {
+    "text": "that's the same pass rate, same model, But the DeepSeek Harness run cost",
+    "start": 293.458,
+    "duration": 4.944
+  },
+  {
+    "text": "only about $3.28 per successful task, and Claude Code cost about $18.34.",
+    "start": 298.432,
+    "duration": 7.35
+  },
+  {
+    "text": "Now, across the whole table, the gap between the cheapest and most expensive",
+    "start": 305.782,
+    "duration": 4.253
+  },
+  {
+    "text": "configurations was actually about 17.5x Now I would be careful reading too much",
+    "start": 310.066,
+    "duration": 5.588
+  },
+  {
+    "text": "into the exact configurations here.",
+    "start": 315.656,
+    "duration": 1.88
+  },
+  {
+    "text": "It's 30 tasks,",
+    "start": 317.795,
+    "duration": 1.294
+  },
+  {
+    "text": "So one task is worth about three and a third points.",
+    "start": 319.139,
+    "duration": 2.828
+  },
+  {
+    "text": "The difference between Codex and DeepSeek is literally just one task here But I do",
+    "start": 322.218,
+    "duration": 5.077
+  },
+  {
+    "text": "think the big picture holds true here, that the harness isn't just a wrapper.",
+    "start": 327.308,
+    "duration": 4.463
+  },
+  {
+    "text": "It changes the cost, the caching, the speed, and the success rate,",
+    "start": 331.832,
+    "duration": 5.029
+  },
+  {
+    "text": "even when the model is held constant.",
+    "start": 337.228,
+    "duration": 2.306
+  },
+  {
+    "text": "so if you're evaluating a model, I'd try and do it in two or three harnesses before",
+    "start": 339.902,
+    "duration": 5.059
+  },
+  {
+    "text": "deciding whether the model is any good.",
+    "start": 344.962,
+    "duration": 2.48
+  },
+  {
+    "text": "Otherwise, you might be just blaming a model for what actually",
+    "start": 347.742,
+    "duration": 2.56
+  },
+  {
+    "text": "is the harness's responsibility",
+    "start": 350.312,
+    "duration": 2.176
+  },
+  {
+    "text": "All right, so what is DeepSeek Harness and why does it do well here?",
+    "start": 352.688,
+    "duration": 3.056
+  },
+  {
+    "text": "So DeepSeek Harness or DSH came out on August 13th alongside, the",
+    "start": 356.044,
+    "duration": 5.561
+  },
+  {
+    "text": "initial release of DeepSeek V4 Pro.",
+    "start": 361.605,
+    "duration": 2.934
+  },
+  {
+    "text": "It's MIT licensed and there's a web UI.",
+    "start": 364.559,
+    "duration": 2.845
+  },
+  {
+    "text": "So you can start with just one npx command and a desktop app.",
+    "start": 367.565,
+    "duration": 3.478
+  },
+  {
+    "text": "It's not locked to the DeepSeek models.",
+    "start": 371.351,
+    "duration": 2.424
+  },
+  {
+    "text": "I think that's really important to stress here.",
+    "start": 373.777,
+    "duration": 2.202
+  },
+  {
+    "text": "It works with other providers and even with OpenAI compatible endpoints.",
+    "start": 376.396,
+    "duration": 4.691
+  },
+  {
+    "text": "The key tagline here, though, that sort of sums this up is that everything is a",
+    "start": 381.409,
+    "duration": 4.628
+  },
+  {
+    "text": "plugin, and they mean that very literally.",
+    "start": 386.038,
+    "duration": 3.22
+  },
+  {
+    "text": "in most agent frameworks, you've got a core, the agent loop, the model",
+    "start": 389.543,
+    "duration": 4.354
+  },
+  {
+    "text": "calls, the tool handling, and then plugins sort of hang off on the side.",
+    "start": 393.897,
+    "duration": 5.048
+  },
+  {
+    "text": "In DSH , the router itself is a plugin, the tool registry, a",
+    "start": 399.291,
+    "duration": 4.915
+  },
+  {
+    "text": "plugin, the session log, a plugin.",
+    "start": 404.212,
+    "duration": 2.355
+  },
+  {
+    "text": "Even the agent loop itself is a plugin underneath all of this is a",
+    "start": 406.776,
+    "duration": 4.663
+  },
+  {
+    "text": "framework called Cordis, and there's a paper behind that from three",
+    "start": 411.439,
+    "duration": 3.858
+  },
+  {
+    "text": "researchers at the Beijing University.",
+    "start": 415.298,
+    "duration": 2.405
+  },
+  {
+    "text": "and this framework DeepSeek called a programming paradigm",
+    "start": 418.003,
+    "duration": 3.004
+  },
+  {
+    "text": "for spatiotemporal composability.",
+    "start": 421.014,
+    "duration": 2.763
+  },
+  {
+    "text": "Now, that sounds like a lot, But the two ideas here are actually pretty simple.",
+    "start": 424.065,
+    "duration": 3.675
+  },
+  {
+    "text": "The first is what they call temporal composability.",
+    "start": 428.006,
+    "duration": 2.982
+  },
+  {
+    "text": "when you remove a component, everything it did gets completely undone.",
+    "start": 431.208,
+    "duration": 3.864
+  },
+  {
+    "text": "If a plugin registered a tool or a hook into event, unloading it",
+    "start": 435.34,
+    "duration": 4.21
+  },
+  {
+    "text": "reverses all of that The simplest way to think about this is that you",
+    "start": 439.566,
+    "duration": 3.871
+  },
+  {
+    "text": "can unplug something really cleanly.",
+    "start": 443.438,
+    "duration": 2.512
+  },
+  {
+    "text": "The second element here is spatial composability.",
+    "start": 446.279,
+    "duration": 2.81
+  },
+  {
+    "text": "Components declare what they depend on, and the runtime activates or deactivates",
+    "start": 449.349,
+    "duration": 4.768
+  },
+  {
+    "text": "them as those dependencies come and go.",
+    "start": 454.135,
+    "duration": 2.416
+  },
+  {
+    "text": "so you can basically plug in things safely and unplug them safely as well.",
+    "start": 456.858,
+    "duration": 4.257
+  },
+  {
+    "text": "now why does an agent harness need this?",
+    "start": 461.315,
+    "duration": 1.924
+  },
+  {
+    "text": "Because systems are changing constantly.",
+    "start": 463.4,
+    "duration": 1.999
+  },
+  {
+    "text": "You're swapping models, you're adding tools, you're turning things on and",
+    "start": 465.4,
+    "duration": 3.701
+  },
+  {
+    "text": "off per permission, and if every one of those changes sort of leaves junk",
+    "start": 469.149,
+    "duration": 4.348
+  },
+  {
+    "text": "behind, things get messy really quickly we saw this even when people sort of",
+    "start": 473.497,
+    "duration": 4.976
+  },
+  {
+    "text": "reversed engineered how Claude Code was working everyone that's making agent",
+    "start": 478.474,
+    "duration": 4.465
+  },
+  {
+    "text": "harnesses at the moment is moving at such a fast pace it's just a simple",
+    "start": 482.952,
+    "duration": 3.615
+  },
+  {
+    "text": "fact that often code gets left behind.",
+    "start": 486.573,
+    "duration": 2.466
+  },
+  {
+    "text": "Anyway, so how does this look in practice?",
+    "start": 489.339,
+    "duration": 2.003
+  },
+  {
+    "text": "well, running DSH is actually a tree of plugins which gets composed",
+    "start": 491.409,
+    "duration": 4.487
+  },
+  {
+    "text": "when it boots up from layers.",
+    "start": 495.896,
+    "duration": 1.971
+  },
+  {
+    "text": "First come bundles, which are packaged sets of plugins plus their configs.",
+    "start": 498.156,
+    "duration": 4.308
+  },
+  {
+    "text": "then your profiles patch a YAML file called cordis.patch.",
+    "start": 502.664,
+    "duration": 3.089
+  },
+  {
+    "text": "Then you've got a home level patch, and then anything you",
+    "start": 506.082,
+    "duration": 3.201
+  },
+  {
+    "text": "pass in on the command line.",
+    "start": 509.283,
+    "duration": 1.574
+  },
+  {
+    "text": "so each layer here can target any plugin by its ID and replace",
+    "start": 510.91,
+    "duration": 5.22
+  },
+  {
+    "text": "its config or insert new ones",
+    "start": 516.131,
+    "duration": 2.245
+  },
+  {
+    "text": "They've even got a command in there for dump config that just prints out",
+    "start": 518.676,
+    "duration": 3.513
+  },
+  {
+    "text": "the whole tree that your machine is booting from and every row in that can",
+    "start": 522.189,
+    "duration": 3.786
+  },
+  {
+    "text": "be overridden now in the UI, they've got four modes and they work in the same way.",
+    "start": 525.976,
+    "duration": 5.093
+  },
+  {
+    "text": "You've got standard, PTC, minimal, and creator and those themselves",
+    "start": 531.077,
+    "duration": 4.558
+  },
+  {
+    "text": "are just different sets of plugins.",
+    "start": 535.683,
+    "duration": 2.038
+  },
+  {
+    "text": "The creator mode is sort of the logical endpoint for this.",
+    "start": 537.987,
+    "duration": 3.508
+  },
+  {
+    "text": "You can describe a plugin in chat and the agent will write it, install it,",
+    "start": 541.653,
+    "duration": 5.342
+  },
+  {
+    "text": "and then check that it's actually live",
+    "start": 547.25,
+    "duration": 1.88
+  },
+  {
+    "text": "So you can kind of think of this as while everyone's been focused on just continual",
+    "start": 549.43,
+    "duration": 3.886
+  },
+  {
+    "text": "learning for models, this is bringing continual learning into the harness",
+    "start": 553.317,
+    "duration": 4.877
+  },
+  {
+    "text": "Another thing that's worth knowing here is that The core repo here isn't",
+    "start": 558.494,
+    "duration": 3.303
+  },
+  {
+    "text": "taking outside pull requests now.",
+    "start": 561.811,
+    "duration": 1.813
+  },
+  {
+    "text": "They're pointing people to discussions and building plugins instead",
+    "start": 563.853,
+    "duration": 4.851
+  },
+  {
+    "text": "Which actually makes total sense for this design, right?",
+    "start": 569.004,
+    "duration": 3.211
+  },
+  {
+    "text": "If there's no core to patch, then plugins are how you contribute.",
+    "start": 572.237,
+    "duration": 4.481
+  },
+  {
+    "text": "And that's what brings us back to the whole super agent so if you",
+    "start": 577.092,
+    "duration": 3.081
+  },
+  {
+    "text": "open the Super Agent repo, one of the first files you'll see is the",
+    "start": 580.18,
+    "duration": 3.692
+  },
+  {
+    "text": "cordis.patch YAML file, and that file is basically the whole integration.",
+    "start": 583.881,
+    "duration": 4.25
+  },
+  {
+    "text": "it inserts a core Super Agent plugin, a GitHub watcher plugin and",
+    "start": 588.192,
+    "duration": 4.416
+  },
+  {
+    "text": "a Feishu watcher plugin by default",
+    "start": 592.611,
+    "duration": 2.05
+  },
+  {
+    "text": "Now obviously if you're not using those, you could just turn those off but the",
+    "start": 594.958,
+    "duration": 3.179
+  },
+  {
+    "text": "way Super Agent works is that it defines a separate preset for the workers.",
+    "start": 598.141,
+    "duration": 4.14
+  },
+  {
+    "text": "You can think of it as DSH's standard preset with a bunch",
+    "start": 602.458,
+    "duration": 3.75
+  },
+  {
+    "text": "of things stripped out.",
+    "start": 606.21,
+    "duration": 1.305
+  },
+  {
+    "text": "No asking the person questions, no plan mode, no web fetch, no spinning off",
+    "start": 607.824,
+    "duration": 5.233
+  },
+  {
+    "text": "sub-agents, etc. And the shell is set so that any command running longer than",
+    "start": 613.06,
+    "duration": 4.099
+  },
+  {
+    "text": "five seconds gets pushed to a background job That way a long build Doesn't stop",
+    "start": 617.16,
+    "duration": 4.714
+  },
+  {
+    "text": "the worker from noticing that someone just left a new comment as it's going",
+    "start": 621.876,
+    "duration": 3.909
+  },
+  {
+    "text": "through Obviously that can be one of the frustrating things with Claude Code and",
+    "start": 625.801,
+    "duration": 3.673
+  },
+  {
+    "text": "Codex is once it starts going, you're sitting there waiting to basically update",
+    "start": 629.475,
+    "duration": 4.955
+  },
+  {
+    "text": "it, and you perhaps want to inject a prompt in while it's still going as you",
+    "start": 634.432,
+    "duration": 3.803
+  },
+  {
+    "text": "realize it's going in the wrong direction so what you're looking at in this agent",
+    "start": 638.235,
+    "duration": 3.905
+  },
+  {
+    "text": "is a fairly different system entirely.",
+    "start": 642.315,
+    "duration": 1.958
+  },
+  {
+    "text": "It's built from configurations and plugins.",
+    "start": 644.283,
+    "duration": 2.985
+  },
+  {
+    "text": "there's no forking of the harness, and really that's the whole payoff of",
+    "start": 647.7,
+    "duration": 3.506
+  },
+  {
+    "text": "the DSH design that we've just talked about Now DSH itself did actually have",
+    "start": 651.206,
+    "duration": 4.771
+  },
+  {
+    "text": "an experimental agent teams feature with a roster, a task board, a mailbox.",
+    "start": 655.989,
+    "duration": 5.549
+  },
+  {
+    "text": "So why build this?",
+    "start": 661.704,
+    "duration": 1.572
+  },
+  {
+    "text": "well, you can think about agent teams is about coordinating agents inside one job.",
+    "start": 663.644,
+    "duration": 5.088
+  },
+  {
+    "text": "The super agent is about handling lots of independent jobs that arrive",
+    "start": 669.116,
+    "duration": 5.205
+  },
+  {
+    "text": "from the outside world over perhaps a long period of time, and also from",
+    "start": 674.331,
+    "duration": 3.658
+  },
+  {
+    "text": "lots of different people posting here.",
+    "start": 677.989,
+    "duration": 1.794
+  },
+  {
+    "text": "It's actually addressing a different problem than what the teams feature did",
+    "start": 680.147,
+    "duration": 4.083
+  },
+  {
+    "text": "And one cool practical detail here is that the router and the workers",
+    "start": 684.53,
+    "duration": 3.408
+  },
+  {
+    "text": "Can each be given a different model.",
+    "start": 688.088,
+    "duration": 1.488
+  },
+  {
+    "text": "So come back to that in a second Now, if we look at the architecture here,",
+    "start": 689.733,
+    "duration": 4.102
+  },
+  {
+    "text": "this basically has two layers to it.",
+    "start": 694.05,
+    "duration": 2.365
+  },
+  {
+    "text": "on top there's one long-running session that they call the router.",
+    "start": 696.743,
+    "duration": 3.133
+  },
+  {
+    "text": "It handles all the human interaction, keeps the big picture context,",
+    "start": 700.161,
+    "duration": 4.104
+  },
+  {
+    "text": "hands out work to perhaps different plugins or different agents.",
+    "start": 704.278,
+    "duration": 3.783
+  },
+  {
+    "text": "underneath are those worker agents, each running in their own isolated session.",
+    "start": 708.35,
+    "duration": 4.381
+  },
+  {
+    "text": "Workers never have to talk to people directly.",
+    "start": 713.047,
+    "duration": 2.301
+  },
+  {
+    "text": "They report back to the router.",
+    "start": 715.364,
+    "duration": 1.794
+  },
+  {
+    "text": "the router does all the communication.",
+    "start": 717.385,
+    "duration": 1.699
+  },
+  {
+    "text": "everything going in from the outside is a trigger.",
+    "start": 719.395,
+    "duration": 2.882
+  },
+  {
+    "text": "A new issue, a review comment, a chat message, et cetera.",
+    "start": 722.567,
+    "duration": 3.944
+  },
+  {
+    "text": "Each trigger first goes through a gate, which is plain code and not even a model.",
+    "start": 726.82,
+    "duration": 3.991
+  },
+  {
+    "text": "and that gives you a deterministic feature to basically check is this",
+    "start": 731.072,
+    "duration": 4.192
+  },
+  {
+    "text": "person even on the allowed list to be able to comment or to be able to",
+    "start": 735.283,
+    "duration": 4.112
+  },
+  {
+    "text": "file a pull request, et cetera it also helps it to answer things like did they",
+    "start": 739.395,
+    "duration": 3.821
+  },
+  {
+    "text": "actually address the agent Now only when those checks have passed does the",
+    "start": 743.217,
+    "duration": 3.911
+  },
+  {
+    "text": "model actually get to look at it and decide, you know, whether it's real work.",
+    "start": 747.133,
+    "duration": 4.079
+  },
+  {
+    "text": "If it is, it becomes a ticket with what they call a mandate.",
+    "start": 751.463,
+    "duration": 3.304
+  },
+  {
+    "text": "that's a record of who asked for it, under which rules, how far the",
+    "start": 755.064,
+    "duration": 3.424
+  },
+  {
+    "text": "work is allowed to go, et cetera.",
+    "start": 758.488,
+    "duration": 1.54
+  },
+  {
+    "text": "that ticket and the mandate then get passed to a worker Now here's a really",
+    "start": 760.228,
+    "duration": 4.545
+  },
+  {
+    "text": "cool detail that they've got in there.",
+    "start": 764.773,
+    "duration": 1.498
+  },
+  {
+    "text": "Once a worker owns a ticket, it subscribes to that conversation.",
+    "start": 766.449,
+    "duration": 4.491
+  },
+  {
+    "text": "So when someone comments on the PR that it opened, that comment",
+    "start": 771.321,
+    "duration": 3.787
+  },
+  {
+    "text": "goes straight to the worker.",
+    "start": 775.108,
+    "duration": 1.291
+  },
+  {
+    "text": "It skips the router entirely and you can think about that skipping of",
+    "start": 776.442,
+    "duration": 3.876
+  },
+  {
+    "text": "that orchestration layer and going straight through Just saves you a",
+    "start": 780.318,
+    "duration": 3.653
+  },
+  {
+    "text": "huge amount on tokens, et cetera.",
+    "start": 784.028,
+    "duration": 1.678
+  },
+  {
+    "text": "In fact, when they turned off this in their experiments, Router decisions",
+    "start": 785.897,
+    "duration": 4.134
+  },
+  {
+    "text": "actually went up by 30%, and obviously the amount of tokens went up with",
+    "start": 790.043,
+    "duration": 4.32
+  },
+  {
+    "text": "it For me though, the part that I find most interesting here though is",
+    "start": 794.364,
+    "duration": 3.219
+  },
+  {
+    "text": "about the router as the bottleneck.",
+    "start": 797.584,
+    "duration": 2.214
+  },
+  {
+    "text": "So you would assume that one central session that's doing the",
+    "start": 800.093,
+    "duration": 2.466
+  },
+  {
+    "text": "orchestration, handing everything out would just get overwhelmed as things",
+    "start": 802.57,
+    "duration": 4.867
+  },
+  {
+    "text": "get busy it actually turns out here that it kind of does the opposite.",
+    "start": 807.442,
+    "duration": 3.688
+  },
+  {
+    "text": "When triggers arrive while the router is in mid-inference, they pile up and they",
+    "start": 811.379,
+    "duration": 5.14
+  },
+  {
+    "text": "get handled together in the next call",
+    "start": 816.519,
+    "duration": 2.265
+  },
+  {
+    "text": "And because The way that they've structured that router's job to be sort",
+    "start": 819.084,
+    "duration": 3.166
+  },
+  {
+    "text": "of long input and short on output, it actually allows it to batch these things",
+    "start": 822.251,
+    "duration": 5.018
+  },
+  {
+    "text": "really cheaply now in DeepSeek's stress test, they push the trigger rate from",
+    "start": 827.269,
+    "duration": 4.274
+  },
+  {
+    "text": "about one a minute to about 40 a minute.",
+    "start": 831.543,
+    "duration": 2.884
+  },
+  {
+    "text": "Average batch size went from one to 2.8.",
+    "start": 834.763,
+    "duration": 3.277
+  },
+  {
+    "text": "and sure, each call did get a bit slower from about 2.5 seconds to 3.9.",
+    "start": 838.34,
+    "duration": 5.219
+  },
+  {
+    "text": "but the time per decision, because it's being done now in batches, actually drops",
+    "start": 843.814,
+    "duration": 4.955
+  },
+  {
+    "text": "from 6.4 seconds down to 1.6 seconds.",
+    "start": 848.769,
+    "duration": 3.54
+  },
+  {
+    "text": "So it got more efficient under load they also say that the router job is",
+    "start": 852.673,
+    "duration": 4.302
+  },
+  {
+    "text": "often simpler than you'd expect, and a lighter model usually handles it fine.",
+    "start": 856.976,
+    "duration": 4.545
+  },
+  {
+    "text": "That kind of goes against the grain for a lot of thinking of Where people have",
+    "start": 861.92,
+    "duration": 3.724
+  },
+  {
+    "text": "been thinking that your orchestrator needs to have the best model and",
+    "start": 865.644,
+    "duration": 3.204
+  },
+  {
+    "text": "that your sub-agents can get away with simpler models It turns out that",
+    "start": 868.849,
+    "duration": 3.434
+  },
+  {
+    "text": "that router doesn't even need a Bash tool so overall that router can use a",
+    "start": 872.283,
+    "duration": 4.41
+  },
+  {
+    "text": "fast, cheap model You can actually use the stronger model for some of your",
+    "start": 876.694,
+    "duration": 4.021
+  },
+  {
+    "text": "workers and this is something that I definitely wanna test more with open",
+    "start": 880.716,
+    "duration": 3.247
+  },
+  {
+    "text": "models going forward anyway, on top of this, they have this philosophy,",
+    "start": 883.975,
+    "duration": 4.04
+  },
+  {
+    "text": "which I think is a really useful part.",
+    "start": 888.233,
+    "duration": 1.701
+  },
+  {
+    "text": "The principle is take as little human attention as possible and",
+    "start": 889.979,
+    "duration": 5.073
+  },
+  {
+    "text": "give as much value as possible.",
+    "start": 895.062,
+    "duration": 2.294
+  },
+  {
+    "text": "And I kind of feel as we're building agents, it's really hard to argue against",
+    "start": 897.656,
+    "duration": 3.516
+  },
+  {
+    "text": "that you want an agent that only acts when someone allowed asks for it, or when",
+    "start": 901.172,
+    "duration": 4.426
+  },
+  {
+    "text": "a rule the team wrote actually allows it Interestingly, even in there when work",
+    "start": 905.599,
+    "duration": 4.327
+  },
+  {
+    "text": "nobody ask for starts, it actually starts in a mode where it just records what it",
+    "start": 909.927,
+    "duration": 5.418
+  },
+  {
+    "text": "would've done it then confirms itself whether that would've actually worked",
+    "start": 915.353,
+    "duration": 4.385
+  },
+  {
+    "text": "and then only speaks up when there's a result or a decision that somebody needs",
+    "start": 919.888,
+    "duration": 4.21
+  },
+  {
+    "text": "to make I really think there are a lot of lessons in here that all of us can",
+    "start": 924.098,
+    "duration": 3.487
+  },
+  {
+    "text": "take away for how we build our own agents",
+    "start": 927.588,
+    "duration": 3.065
+  },
+  {
+    "text": "Okay, so what's missing here?",
+    "start": 930.953,
+    "duration": 1.57
+  },
+  {
+    "text": "Let me go through a few caveats here.",
+    "start": 932.541,
+    "duration": 2.114
+  },
+  {
+    "text": "First, this is a prototype, and they say that really clearly.",
+    "start": 934.955,
+    "duration": 2.997
+  },
+  {
+    "text": "The published code isn't identical to their internal version.",
+    "start": 938.009,
+    "duration": 2.827
+  },
+  {
+    "text": "Some designs in the article, are actually future directions that aren't in the",
+    "start": 941.044,
+    "duration": 4.334
+  },
+  {
+    "text": "repo yet and from what I can see, things like the watchdog session perhaps isn't",
+    "start": 945.379,
+    "duration": 4.023
+  },
+  {
+    "text": "fully there yet, and I'm sure there are others that are missing as well.",
+    "start": 949.402,
+    "duration": 3.219
+  },
+  {
+    "text": "Second, this is all kind of narrow.",
+    "start": 953.048,
+    "duration": 1.859
+  },
+  {
+    "text": "It's one GitHub repo they haven't set this up to work with Slack or with email But",
+    "start": 954.936,
+    "duration": 5.508
+  },
+  {
+    "text": "actually I'm not really worried about that Because everything is basically a plugin,",
+    "start": 960.444,
+    "duration": 3.873
+  },
+  {
+    "text": "they've also included a cookbook for adding your own source code in there so",
+    "start": 964.488,
+    "duration": 3.939
+  },
+  {
+    "text": "my guess is very quickly we will see forks of this with lots of other integrations",
+    "start": 968.427,
+    "duration": 4.094
+  },
+  {
+    "text": "in there third up the thing that we should be a little bit concerned about",
+    "start": 972.522,
+    "duration": 3.184
+  },
+  {
+    "text": "is that the super agent experiments that they ran on and reported their benchmarks",
+    "start": 975.994,
+    "duration": 4.667
+  },
+  {
+    "text": "on are actually run on synthetic workloads in a simplified environment.",
+    "start": 980.664,
+    "duration": 4.453
+  },
+  {
+    "text": "and they say themselves that this is basically just a preliminary",
+    "start": 985.449,
+    "duration": 2.96
+  },
+  {
+    "text": "reference and on things like the 30 tasks, this is just a small sample.",
+    "start": 988.409,
+    "duration": 3.816
+  },
+  {
+    "text": "so just treat those rankings as a rough guide.",
+    "start": 992.34,
+    "duration": 2.324
+  },
+  {
+    "text": "finally the big thing to be a little bit concerned about here is security.",
+    "start": 994.864,
+    "duration": 3.222
+  },
+  {
+    "text": "they do list the problems of prompt injection, credentials leaking,",
+    "start": 998.348,
+    "duration": 4.056
+  },
+  {
+    "text": "permissions across devices, et cetera, as things that they haven't fully",
+    "start": 1002.476,
+    "duration": 4.003
+  },
+  {
+    "text": "solved yet so naturally you probably wanna be a bit careful about how you",
+    "start": 1006.48,
+    "duration": 3.665
+  },
+  {
+    "text": "use this but if you are using it with local models in a totally locked down",
+    "start": 1010.146,
+    "duration": 3.769
+  },
+  {
+    "text": "environment, you probably don't have a lot to really worry about here Alright.",
+    "start": 1013.915,
+    "duration": 3.904
+  },
+  {
+    "text": "So overall, why I think Super Agent is a really interesting product here,",
+    "start": 1017.822,
+    "duration": 3.687
+  },
+  {
+    "text": "what is even more interesting here it's just basically the proof of design.",
+    "start": 1021.717,
+    "duration": 4.68
+  },
+  {
+    "text": "DeepSeek has built something which is quite a different agent system On",
+    "start": 1026.457,
+    "duration": 3.873
+  },
+  {
+    "text": "top of their own harness with just a few patch files and plugins without",
+    "start": 1030.332,
+    "duration": 4.177
+  },
+  {
+    "text": "touching the core of the harness at all.",
+    "start": 1034.521,
+    "duration": 2.388
+  },
+  {
+    "text": "And for me, the bigger point here is just showing you how",
+    "start": 1037.109,
+    "duration": 2.371
+  },
+  {
+    "text": "much harnesses are evolving at such a quick pace at the moment.",
+    "start": 1039.48,
+    "duration": 3.539
+  },
+  {
+    "text": "Anyway, as always, I've put the links to the repos, the paper, the benchmark,",
+    "start": 1043.319,
+    "duration": 4.204
+  },
+  {
+    "text": "all of that's in the description let me know in the comments what you think.",
+    "start": 1047.533,
+    "duration": 3.662
+  },
+  {
+    "text": "Do you see the future of the harnesses of being these composable plugins",
+    "start": 1051.207,
+    "duration": 5.056
+  },
+  {
+    "text": "Where different people create different ideas in different ways, and we're not",
+    "start": 1056.417,
+    "duration": 4.878
+  },
+  {
+    "text": "just reliant on the same coding agent interfaces that we've seen up until now",
+    "start": 1061.296,
+    "duration": 4.684
+  },
+  {
+    "text": "as always, if you found the video useful, please click like and subscribe, and",
+    "start": 1066.18,
+    "duration": 3.399
+  },
+  {
+    "text": "I will talk to you in the next video.",
+    "start": 1069.58,
+    "duration": 1.26
+  },
+  {
+    "text": "Bye for now",
+    "start": 1071.005,
+    "duration": 0.794
+  }
+]

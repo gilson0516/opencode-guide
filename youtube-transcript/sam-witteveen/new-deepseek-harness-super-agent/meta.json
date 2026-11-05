@@ -1,0 +1,69 @@
+{
+  "videoId": "OrcsMi2-IcM",
+  "title": "NEW DeepSeek Harness -  Super Agent!",
+  "channel": "Sam Witteveen",
+  "channelId": "UC55ODQSvARtgSyc8ThfiepQ",
+  "description": "In this video, I look at the new announcement about the DeepSeek harness and the introduction of their super agent add-on for their harness. \n\nGH: https://github.com/deepseek-ai/dsh-superagent-prototype\nX post: https://x.com/DeepSeekHarness/status/2116857257245987236\n\n2nd Channel:  https://www.youtube.com/channel/UCUF7WtR4JpVbQqcQGrLeADw\n\nTwitter: https://x.com/Sam_Witteveen \n\n🕵️ Interested in building LLM Agents? Fill out the form below\nBuilding LLM Agents Form: https://drp.li/dIMes\n\n👨‍💻Github:\nhttps://github.com/samwit/llm-tutorials\n\n⏱️Time Stamps:\n0:00 Intro\n0:39 DeepSeek Harness recap\n1:15 What Super Agent is\n2:49 Model or harness: what matters more?\n3:53 Frontier Harness benchmark\n5:52 DeepSeek Harness: everything is a plugin\n6:49 Cordis\n10:53 Agent teams vs Super Agent\n15:30 Limits: prototype, GitHub only, synthetic tests\n17:23 Will harnesses become all plugins?",
+  "duration": 1072,
+  "publishDate": "",
+  "url": "https://www.youtube.com/watch?v=OrcsMi2-IcM",
+  "coverImage": "imgs/cover.jpg",
+  "thumbnailUrl": "https://i.ytimg.com/vi/OrcsMi2-IcM/maxresdefault.jpg",
+  "language": {
+    "code": "en-US",
+    "name": "English (United States)",
+    "isGenerated": false
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0,
+      "end": 39
+    },
+    {
+      "title": "DeepSeek Harness recap",
+      "start": 39,
+      "end": 75
+    },
+    {
+      "title": "What Super Agent is",
+      "start": 75,
+      "end": 169
+    },
+    {
+      "title": "Model or harness: what matters more?",
+      "start": 169,
+      "end": 233
+    },
+    {
+      "title": "Frontier Harness benchmark",
+      "start": 233,
+      "end": 352
+    },
+    {
+      "title": "DeepSeek Harness: everything is a plugin",
+      "start": 352,
+      "end": 409
+    },
+    {
+      "title": "Cordis",
+      "start": 409,
+      "end": 653
+    },
+    {
+      "title": "Agent teams vs Super Agent",
+      "start": 653,
+      "end": 930
+    },
+    {
+      "title": "Limits: prototype, GitHub only, synthetic tests",
+      "start": 930,
+      "end": 1043
+    },
+    {
+      "title": "Will harnesses become all plugins?",
+      "start": 1043,
+      "end": 1072
+    }
+  ]
+}

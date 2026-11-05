@@ -1,0 +1,89 @@
+{
+  "videoId": "npjJyQnLM6U",
+  "title": "Learn 80% of OpenCode Desktop in 20 Minutes! | Full Beginner Tutorial",
+  "channel": "Thanh-y David Nguyen",
+  "channelId": "UCC9EWUyszAgcSKHNik4HHKQ",
+  "description": "In this video, I'll show you everything you need to get started with OpenCode Desktop as a beginner. We'll compare it to Claude Code, go through the installation and setup process, create your first project, connect GitHub, configure model providers, and explore powerful features like slash commands, Skills, MCP servers, and the Build & Plan agents.\n\nBy the end of this tutorial, you'll have everything you need to start using OpenCode Desktop as your AI coding assistant.\n\n⌚ Time stamps:\n00:00 Intro\n00:31 Claude Code vs OpenCode\n02:15 Installation & Setup\n03:10 Add Model Provider\n04:49 Settings\n06:02 Build and Plan\n07:20 Testing the created App \n08:19 Git Installation\n09:51 Commands\n11:06 Skills\n12:41 MCP Servers\n15:46 AGENDS.md File\n17:11 Github Connection and Push\n19:27 Outro\n\n\n📖 OpenCode\nhttps://opencode.ai/\n\n🛠️ MCP Server:\nhttps://mcpservers.org/de/servers/thiagotw10/document-generator-mcp\n\n✨ Skills:\nhttps://www.skills.sh/",
+  "duration": 1175,
+  "publishDate": "",
+  "url": "https://www.youtube.com/watch?v=npjJyQnLM6U",
+  "coverImage": "imgs/cover.jpg",
+  "thumbnailUrl": "https://i.ytimg.com/vi/npjJyQnLM6U/maxresdefault.jpg",
+  "language": {
+    "code": "ko",
+    "name": "Korean (auto-generated)",
+    "isGenerated": true
+  },
+  "chapters": [
+    {
+      "title": "Intro",
+      "start": 0,
+      "end": 31
+    },
+    {
+      "title": "Claude Code vs OpenCode",
+      "start": 31,
+      "end": 135
+    },
+    {
+      "title": "Installation & Setup",
+      "start": 135,
+      "end": 190
+    },
+    {
+      "title": "Add Model Provider",
+      "start": 190,
+      "end": 289
+    },
+    {
+      "title": "Settings",
+      "start": 289,
+      "end": 362
+    },
+    {
+      "title": "Build and Plan",
+      "start": 362,
+      "end": 440
+    },
+    {
+      "title": "Testing the created App",
+      "start": 440,
+      "end": 499
+    },
+    {
+      "title": "Git Installation",
+      "start": 499,
+      "end": 591
+    },
+    {
+      "title": "Commands",
+      "start": 591,
+      "end": 666
+    },
+    {
+      "title": "Skills",
+      "start": 666,
+      "end": 761
+    },
+    {
+      "title": "MCP Servers",
+      "start": 761,
+      "end": 946
+    },
+    {
+      "title": "AGENDS.md File",
+      "start": 946,
+      "end": 1031
+    },
+    {
+      "title": "Github Connection and Push",
+      "start": 1031,
+      "end": 1167
+    },
+    {
+      "title": "Outro",
+      "start": 1167,
+      "end": 1175
+    }
+  ]
+}
