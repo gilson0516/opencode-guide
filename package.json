@@ -1,0 +1,28 @@
+{
+  "name": "opencode-guide",
+  "version": "1.0.0",
+  "description": "시니어 직장인의 AI 탐구기: 오픈코드(OpenCode) 완벽 실전 가이드",
+  "type": "module",
+  "scripts": {
+    "check:links": "node scripts/check-links.mjs",
+    "check:unicode": "node scripts/check-unicode.mjs",
+    "lint:md": "npx markdownlint-cli2 \"**/*.md\" \"#node_modules\" \"#.archify\"",
+    "check": "npm run check:links && npm run check:unicode"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilson0516/opencode-guide.git"
+  },
+  "keywords": [
+    "opencode",
+    "ai",
+    "guide",
+    "tutorial",
+    "markdown"
+  ],
+  "author": "JeongGooi Lee <gilson0516@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "markdownlint-cli2": "^0.17.2"
+  }
+}

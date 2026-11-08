@@ -1,0 +1,31 @@
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor & IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.obsidian/
+
+# Node.js & Build Outputs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dist/
+.vitepress/dist/
+.vitepress/cache/
+
+# Temporary & Cache
+*.tmp
+.cache/
+.temp/
